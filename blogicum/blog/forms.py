@@ -1,6 +1,7 @@
 from django import forms
 
-from .models import Post, User, Comment
+
+from blog.models import Post, Comment, User
 
 
 class PostForm(forms.ModelForm):
@@ -9,13 +10,13 @@ class PostForm(forms.ModelForm):
         exclude = ('author',)
 
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'username', 'email')
-
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text',)
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
